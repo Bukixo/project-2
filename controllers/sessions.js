@@ -1,7 +1,8 @@
 const User = require('../models/user');
+const oauth = require('../config/oauth');
 
 function sessionsNew(req, res) {
-  res.render('sessions/new');
+  res.render('sessions/new' , { oauth });
 }
 
 function sessionsCreate(req, res, next) {
@@ -18,8 +19,8 @@ function sessionsCreate(req, res, next) {
 
       req.user = user;
 
-      req.flash('success', `Welcome back, ${user.username}!`);
-      res.redirect('/user');
+      req.flash('success');
+      res.redirect(`/users/${user.id}`);
     })
     .catch(next);
 }

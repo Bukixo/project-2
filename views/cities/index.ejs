@@ -1,0 +1,15 @@
+<% cities.forEach((city) => { %>
+  <div>
+    <a href="/cities/<%= city.id %>">
+      <img src="<%= city.image %>" alt="<%= city.name %>">
+      <h2><%= city.name %></h2>
+      <p>
+        <%= city.location %><br>
+        <%= city.stars %><br>
+      </p>
+      <p>
+        <% while(city.stars--) { %> &star; <% } %>
+      </p>
+    </a>
+  </div>
+<% }) %>

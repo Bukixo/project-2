@@ -1,5 +1,6 @@
 const User = require('../models/user');
 
+
 function indexRoute(req, res) {
   User
     .find()
@@ -34,11 +35,12 @@ function createRoute(req, res) {
     .create(req.body)
     // create the form data in req.body
     .then(() => {
-      res.redirect('/users');
+      res.redirect('cities/index');
     })
     .catch((err) => {
       res.status(500).end(err);
     });
+
 }
 
 function editRoute(req, res){
@@ -54,26 +56,22 @@ function editRoute(req, res){
     });
 }
 
-function updateRoute(req, res) {
+function updateRoute(req, res, next) {
   User
     .findById(req.params.id)
     .exec()
-    // found the original user that is being updated
     .then((user) => {
-      if (!user) return res.status(404).send('Not Found');
-      // for each key value pair, puts the value from the updating form and puts it on the object
+      if(!user) return res.notFound();
+
       for(const field in req.body) {
         user[field] = req.body[field];
       }
-// and then save that updated entry in the database
+
       return user.save();
     })
-    .then((user) => {
-      res.redirect(`/users/${user.id}`);
-    })
-    .catch((err) => {
-      res.status(500).end(err);
-    });
+    .then((users) => res.redirect(`/users/${users.id}`))
+    .catch(next);
+
 }
 
 function deleteRoute(req, res) {
@@ -92,6 +90,31 @@ function deleteRoute(req, res) {
     });
 }
 
+
+function newImageRoute(req, res) {
+  res.render('users/newImage');
+}
+
+function createImageRoute(req, res, next) {
+  if(req.file) req.body.filename = req.file.key;
+
+  // For some reason multer's req.body doesn't behave like body-parser's
+  req.body = Object.assign({}, req.body);
+
+  req.user.images.push(req.body);
+
+  req.user
+    .save()
+    .then(() => res.redirect('/user'))
+    .catch((err) => {
+      console.log(err);
+      if(err.name === 'ValidationError') return res.badRequest('/user/images/new', err.toString());
+      next(err);
+    });
+}
+
+
+
 module.exports = {
   index: indexRoute,
   new: newRoute,
@@ -99,5 +122,7 @@ module.exports = {
   create: createRoute,
   edit: editRoute,
   update: updateRoute,
-  delete: deleteRoute
+  delete: deleteRoute,
+  newImage: newImageRoute,
+  createImage: createImageRoute
 };

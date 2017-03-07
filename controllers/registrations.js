@@ -1,10 +1,14 @@
 const User = require('../models/user');
 
+
 function newRoute(req, res) {
   return res.render('registrations/new');
 }
 
 function createRoute(req, res, next) {
+
+  if(req.file) req.body.profileImage = req.file.key;
+
   User
     .create(req.body)
     .then(() => res.redirect('/login'))
@@ -15,9 +19,15 @@ function createRoute(req, res, next) {
       }
       next();
     });
+
 }
+function showRoute(req, res) {
+  return res.render('registrations/show');
+}
+
 
 module.exports = {
   new: newRoute,
-  create: createRoute
+  create: createRoute,
+  show: showRoute
 };

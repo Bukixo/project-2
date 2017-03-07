@@ -1,12 +1,34 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+
+// const imageSchema = new mongoose.Schema({
+//   filename: { type: String },
+//   caption: { type: String }
+// });
+
 const userSchema = new mongoose.Schema({
   username: { type: String},
   email: {type: String},
+  image: { type: String },
   age: {type: Number },
+  // images: [ imageSchema ],
   location: { type: String},
   password: {type: String, required: true}
 });
+
+
+// imageSchema.virtual('src')
+//   .get(function getImageSRC(){
+//     if(!this.filename) return null;
+//     return `https://s3-eu-west-1.amazonaws.com/wdi-london-buki/${this.filename}`;
+//   });
+
+userSchema
+  .virtual('imageSRC')
+  .get(function getImageSRC() {
+    if(!this.image) return null;
+    return `https://s3-eu-west-1.amazonaws.com/wdi-london-buki/${this.image}`;
+  });
 
 userSchema.pre('validate', function checkPassword(next) {
   if(!this.password && !this.githubId) {
@@ -27,12 +49,6 @@ userSchema.pre('validate', function checkPassword(next) {
     this.invalidate('password', 'required');
   }
   if(this.isModified('password') && this._passwordConfirmation !== this.password) this.invalidate('passwordConfirmation', 'does not match');
-  next();
-});
-
-userSchema.pre('validate', function checkPassword(next) {
-  if(!this._passwordConfirmation || this._passwordConfirmation !==
-  this.password) this.invalidate('passwordConfirmation', 'does not match');
   next();
 });
 
