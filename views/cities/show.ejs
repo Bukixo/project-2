@@ -1,38 +1,56 @@
-<div>
-  <img src="<%= city.image %>" alt="<%= city.name %>">
-  <h2><%= city.name %></h2>
-  <h2><%= city.location %></h2>
+<section>
+  <div class="container">
+    <img src="<%= city.image %>" alt="<%= city.name %>">
+    <h2><%= city.name %></h2>
+    <h2><%= city.location %></h2>
 
 
-  <p>
-    <% while(city.stars--) { %> &star; <% } %>
-  </p>
+    <p>
+      <% while(city.stars--) { %> &star; <% } %>
+    </p>
 
-  <section>
-    <h4>Comments</h4>
-    <% city.comments.forEach((comment) => { %>
-      <p><%= comment.content %></p>
-      <small><%= comment.createdBy.username %></small>
-
-      <% if(locals.isAuthenticated && comment.ownedBy(user)) { %>
-        <form method="POST" action="/cities/<%= city.id %>/comments/<%= comment.id %>">
-        <input type="hidden" name="_method" value="DELETE">
-        <button>Delete</button>
-      </form>
-    <% } %>
-  <% }) %>
-
-  </section>
-
-  <% if(locals.isAuthenticated) { %>
     <section>
-      <h4>Leave a comment</h4>
-      <form method="POST" action="/cities/<%= city.id %>/comments">
-        <textarea name="content" id="content" placeholder="Comment"></textarea>
-        <button class="button">Leave a comment</button>
-      </form>
-    </section>
-  <% } %>
-</div>
+      <h4>Comments</h4>
+      <% city.comments.forEach((comment) => { %>
+        <p><%= comment.content %></p>
+        <small><%= comment.createdBy.username %></small>
 
-<button><a href="/cities">back</a></button>
+        <% if(locals.isAuthenticated && comment.ownedBy(user)) { %>
+          <form method="POST" action="/cities/<%= city.id %>/comments/<%= comment.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button>Delete</button>
+        </form>
+      <% } %>
+    <% }) %>
+
+    </section>
+
+    <% if(locals.isAuthenticated) { %>
+      <section>
+        <h4>Leave a comment</h4>
+        <form method="POST" action="/cities/<%= city.id %>/comments">
+          <textarea name="content" id="content" placeholder="Comment"></textarea>
+          <button class="button">Leave a comment</button>
+        </form>
+      </section>
+    <% } %>
+
+<a href="/cities/<%= city.id %>/images/new">Add image</a>
+    <h1><%= city.name %></h1>
+    <div class="feed">
+      <% city.images.forEach((image) => { %>
+        <img src="<%= image.src %>" alt="<%= image.caption %>">
+        <p><%= image.caption %></p>
+      <% }) %>
+    </div>
+
+    <form action="/cities/<%= city.id %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE"/>
+      <button>Delete</button>
+  </form>
+
+    <button><a href="/cities">back</a></button>
+  </div>
+
+  
+</section>

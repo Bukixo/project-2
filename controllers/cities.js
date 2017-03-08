@@ -114,6 +114,30 @@ function deleteCommentRoute(req, res, next) {
   .catch(next);
 }
 
+
+function newImageRoute(req, res) {
+  res.render(`cities/newImage`);
+}
+
+
+function createImageRoute(req, res, next) {
+  if(req.file) req.body.filename = req.file.key;
+
+  // For some reason multer's req.body doesn't behave like body-parser's
+  req.body = Object.assign({}, req.body);
+
+  req.user.images.push(req.body);
+
+  req.user
+    .save()
+    .then(() => res.redirect('/cities'))
+    .catch((err) => {
+      console.log(err);
+      if(err.name === 'ValidationError') return res.badRequest(`/cities/images/new`, err.toString());
+      next(err);
+    });
+}
+
 module.exports = {
   index: indexRoute,
   new: newRoute,
@@ -123,5 +147,7 @@ module.exports = {
   update: updateRoute,
   delete: deleteRoute,
   createComment: createCommentRoute,
-  deleteComment: deleteCommentRoute
+  deleteComment: deleteCommentRoute,
+  newImage: newImageRoute,
+  createImage: createImageRoute
 };

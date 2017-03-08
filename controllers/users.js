@@ -6,7 +6,7 @@ function indexRoute(req, res) {
     .find()
     .exec()
     .then((users) => {
-      res.render('users/index', { users });
+      res.render('users/show', { users });
     })
     .catch((err) => {
       res.status(500).end(err);
@@ -90,10 +90,10 @@ function deleteRoute(req, res) {
     });
 }
 
-
 function newImageRoute(req, res) {
-  res.render('users/newImage');
+  res.render(`users/newImage`);
 }
+
 
 function createImageRoute(req, res, next) {
   if(req.file) req.body.filename = req.file.key;
@@ -105,10 +105,10 @@ function createImageRoute(req, res, next) {
 
   req.user
     .save()
-    .then(() => res.redirect('/user'))
+    .then(() => res.redirect('/users'))
     .catch((err) => {
       console.log(err);
-      if(err.name === 'ValidationError') return res.badRequest('/user/images/new', err.toString());
+      if(err.name === 'ValidationError') return res.badRequest(`/user/images/new`, err.toString());
       next(err);
     });
 }

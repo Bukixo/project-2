@@ -1,0 +1,15 @@
+<main>
+    <div class="container">
+      <form method="POST" action="/cities/<%= city.id %>/images" enctype="multipart/form-data">
+        <div>
+          <label for="filename">Image file</label>
+          <input type="file" name="filename" id="filename">
+        </div>
+        <div>
+          <label for="caption">Caption</label>
+          <textarea name="caption" id="caption"></textarea>
+        </div>
+        <button>Add</button>
+      </form>
+  </div>
+</main>

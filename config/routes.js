@@ -25,12 +25,14 @@ router.route('/users/:id')
 
 router.route('/users/:id/edit')
   .get(secureRoute, users.edit);
-  // .get(secureRoute, users.newImage)
-  // .post(secureRoute, upload.single('filename'), users.createImage);
 
-// router.route('/cities/:id/edit')
-//   .get(secureRoute, cities.edit);
-//
+router.route('/users/:id/images/new')
+  .get(secureRoute, users.newImage);
+
+router.route('/users/:id/images')
+  .post(secureRoute, upload.single('filename'), users.createImage);
+
+
 router.route('/cities')
   .get(cities.index)
   .post(secureRoute, cities.create);
@@ -51,6 +53,18 @@ router.route('/cities/:id/comments/:commentId')
   .delete(secureRoute, cities.deleteComment);
 
 
+router.route('/user/images/new')
+  .get(secureRoute, users.newImage);
+
+router.route('/user/images')
+  .post(secureRoute, upload.single('filename'), users.createImage);
+
+router.route('/city/images/new')
+  .get(secureRoute, cities.newImage);
+
+router.route('/city/images')
+  .post(secureRoute, upload.single('filename'), cities.createImage);
+
 
 router.route('/register')
   .get(registrations.new)
@@ -59,6 +73,10 @@ router.route('/register')
 router.route('/login')
     .get(sessions.new)
     .post(sessions.create);
+
+
+router.route('/logout')
+    .get(sessions.delete);
 
 router.route('/oauth/instagram')
     .get(oauth.instagram);

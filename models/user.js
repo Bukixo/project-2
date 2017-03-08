@@ -1,42 +1,38 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-// const imageSchema = new mongoose.Schema({
-//   filename: { type: String },
-//   caption: { type: String }
-// });
+const imagesSchema = new mongoose.Schema({
+  filename: { type: String },
+  caption: { type: String }
+});
+
+imagesSchema
+  .virtual('src')
+  .get(function getImageSRC(){
+    if(!this.filename) return null;
+    return `https://s3-eu-west-1.amazonaws.com/wdi-london-buki/${this.filename}`;
+  });
 
 const userSchema = new mongoose.Schema({
   username: { type: String},
   email: {type: String},
   image: { type: String },
   age: {type: Number },
-  // images: [ imageSchema ],
+  instagramId: {type: Number },
+  images: [ imagesSchema ],
   location: { type: String},
-  password: {type: String, required: true}
+  password: {type: String}
 });
 
-
-// imageSchema.virtual('src')
-//   .get(function getImageSRC(){
-//     if(!this.filename) return null;
-//     return `https://s3-eu-west-1.amazonaws.com/wdi-london-buki/${this.filename}`;
-//   });
 
 userSchema
   .virtual('imageSRC')
   .get(function getImageSRC() {
     if(!this.image) return null;
+    if (this.image.match(/^http/)) return this.image;
     return `https://s3-eu-west-1.amazonaws.com/wdi-london-buki/${this.image}`;
   });
 
-userSchema.pre('validate', function checkPassword(next) {
-  if(!this.password && !this.githubId) {
-    this.invalidate('password', 'required');
-  }
-  if(this.isModified('password') && this._passwordConfirmation !== this.password) this.invalidate('passwordConfirmation', 'does not match');
-  next();
-});
 userSchema
   .virtual('passwordConfirmation')
   .set(function setPasswordconfirmation(passwordConfirmation) {
@@ -45,7 +41,7 @@ userSchema
 
 //lifcycle hook - moongoose middleware
 userSchema.pre('validate', function checkPassword(next) {
-  if(!this.password && !this.githubId) {
+  if(!this.password && !this.instagramId) {
     this.invalidate('password', 'required');
   }
   if(this.isModified('password') && this._passwordConfirmation !== this.password) this.invalidate('passwordConfirmation', 'does not match');
