@@ -7,8 +7,7 @@ mongoose.connect(dbURI);
 const User = require('../models/user');
 const City = require('../models/city');
 
-User.collection.drop();
-City.collection.drop();
+mongoose.connection.dropDatabase();
 
 
 User

@@ -27,7 +27,7 @@ function createRoute(req, res, next) {
 function showRoute(req, res, next) {
   City
     .findById(req.params.id)
-    .populate('comments.createdBy')
+    .populate('comments.createdBy visit')
     .exec()
     .then((city) => {
       if(!city) return res.notFound();
@@ -138,6 +138,20 @@ function createImageRoute(req, res, next) {
     });
 }
 
+// POST /cities/:id/vistor
+function addVisitorRoute(req, res, next) {
+  City
+    .findById(req.params.id)
+    .exec()
+    .then((city) => {
+      if (!city) return res.notFound();
+      city.visitors.push(req.user);
+      return city.save();
+    })
+    .then((city) => res.redirect(`/cities/${city.id}`))
+    .catch(next);
+}
+
 module.exports = {
   index: indexRoute,
   new: newRoute,
@@ -149,5 +163,6 @@ module.exports = {
   createComment: createCommentRoute,
   deleteComment: deleteCommentRoute,
   newImage: newImageRoute,
-  createImage: createImageRoute
+  createImage: createImageRoute,
+  addVisitor: addVisitorRoute
 };

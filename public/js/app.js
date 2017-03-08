@@ -1,8 +1,8 @@
 'use strict';
 
-$(function () {
+/* global google */
 
-  var apiKey = 'AIzaSyDc7hNgWybvVmyFoxffU6oAKwOBif-cJIo';
+$(function () {
   var $map = $('#map');
   var cityLatLng = null;
   var infowindow = null;
@@ -20,31 +20,33 @@ $(function () {
   if ($map.length) getCityLocation();
 
   function getCityLocation() {
-    var name = $map.data('cities');
-    $.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + name + '&key=' + apiKey).done(function (response) {
-      var cityLocation = response.results[0].geometry.location;
-      cityLatLng = { lat: cityLocation.lat, lng: cityLocation.lng };
-      initMap();
-      console.log(name);
+    initMap();
+    var cities = $map.data('cities');
+    var geocoder = new google.maps.Geocoder();
+    cities.forEach(function (city) {
+      geocoder.geocode({ address: city.name + ', ' + city.location }, function (results) {
+        addMarker(results[0].geometry.location, city._id);
+      });
     });
   }
 
   function initMap() {
-    var london = { lat: 51.5074, lng: 0.1278 };
     map = new google.maps.Map($map.get(0), {
-      zoom: 14,
-      center: london
+      zoom: 2,
+      center: { lat: 25, lng: 0 }
     });
-    new google.maps.Marker({
-      postion: london,
-      map: map
-    });
-
-    //Functions go here
   }
 
-  // function addMarker(city) {
-  //
-  // }
+  function addMarker(latLng, id) {
+    console.log('adding marker', latLng, map);
+    var marker = new google.maps.Marker({
+      position: latLng,
+      map: map,
+      id: id
+    });
 
+    marker.addListener('click', function () {
+      window.location.replace('/cities/' + this.id);
+    });
+  }
 });

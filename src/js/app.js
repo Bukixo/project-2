@@ -1,6 +1,6 @@
-$(() => {
+/* global google */
 
-  const apiKey = 'AIzaSyDc7hNgWybvVmyFoxffU6oAKwOBif-cJIo';
+$(() => {
   const $map = $('#map');
   let cityLatLng = null;
   let infowindow = null;
@@ -16,40 +16,38 @@ $(() => {
 
   });
 
-
-
-
   if ($map.length) getCityLocation();
 
   function getCityLocation() {
-    const name = $map.data('cities');
-    $.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${name}&key=${apiKey}`)
-      .done((response) => {
-        const cityLocation = response.results[0].geometry.location;
-        cityLatLng = { lat: cityLocation.lat, lng: cityLocation.lng };
-        initMap();
-        console.log(name);
+    initMap();
+    const cities = $map.data('cities');
+    const geocoder = new google.maps.Geocoder();
+    cities.forEach((city) => {
+      geocoder.geocode({ address: `${city.name}, ${city.location}` }, (results) => {
+        addMarker(results[0].geometry.location, city._id);
       });
+    });
   }
-
 
   function initMap() {
-    const london = { lat: 51.5074, lng: 0.1278 }
     map = new google.maps.Map($map.get(0), {
-      zoom: 14,
-      center: london
+      zoom: 2,
+      center: { lat: 25, lng: 0 }
     });
-    new google.maps.Marker({
-      postion: london,
-      map
-    });
-
-    //Functions go here
   }
 
-  // function addMarker(city) {
-  //
-  // }
+  function addMarker(latLng, id) {
+    console.log('adding marker', latLng, map);
+    const marker = new google.maps.Marker({
+      position: latLng,
+      map,
+      id
+    });
+
+    marker.addListener('click', function() {
+      window.location.replace(`/cities/${this.id}`);
+    });
+  }
 
 
 });

@@ -31,7 +31,8 @@ const citySchema = new mongoose.Schema({
   images: [ imagesSchema ],
   stars: { type: String, required: true},
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
-  comments: [ commentSchema ]
+  comments: [ commentSchema ],
+  visitors: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
 });
 
 module.exports = mongoose.model('City', citySchema);
