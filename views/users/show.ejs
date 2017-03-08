@@ -8,10 +8,10 @@
 
   
 
-    <% cities.forEach((city) => { %>
+  <% cities.forEach((city) => { %>
+    <button><a href="/cities/<%= city.id %>/"><%= city.name %></a></button>
+  <% }) %>
 
-      <p><%= city.name %></p>
-    <% }) %>
 
   <img src="<%= user.imageSRC %>" alt="<%= user.username %>">
 

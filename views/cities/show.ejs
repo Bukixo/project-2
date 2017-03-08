@@ -53,6 +53,7 @@
     <h4>Visitors</h4>
     <% city.visitors.forEach((visitor) => { %>
       <p> <%= visitor.username %></p>
+        <a href="/visitors/<%= visitor.id %>"><img src="<%= visitor.imageSRC %>" alt="<%= visitor.username %>">
 
       <% if(locals.isAuthenticated ) { %>
         <form method="POST" action="/cities/<%= city.id %>/visitors/<%= visitor.id %>">
