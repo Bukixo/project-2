@@ -14,7 +14,6 @@
       <% city.comments.forEach((comment) => { %>
         <p><%= comment.content %></p>
         <small><%= comment.createdBy.username %></small>
-
         <% if(locals.isAuthenticated && comment.ownedBy(user)) { %>
           <form method="POST" action="/cities/<%= city.id %>/comments/<%= comment.id %>">
           <input type="hidden" name="_method" value="DELETE">
@@ -49,8 +48,38 @@
       <button>Delete</button>
   </form>
 
+
+  <section>
+    <h4>Visitors</h4>
+    <% city.visitors.forEach((visitor) => { %>
+      <p> <%= visitor.username %></p>
+
+      <% if(locals.isAuthenticated ) { %>
+        <form method="POST" action="/cities/<%= city.id %>/visitors/<%= visitor.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <button>Delete</button>
+      </form>
+    <% } %>
+  <% }) %>
+
+  </section>
+
+  <% if(locals.isAuthenticated) { %>
+    <section>
+
+      <form method="POST" action="/cities/<%= city.id %>/visitors">
+        <button class="button">wanna visit?</button>
+      </form>
+    </section>
+  <% } %>
+
+
+
+
+
+
     <button><a href="/cities">back</a></button>
   </div>
 
-  
+
 </section>

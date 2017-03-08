@@ -27,7 +27,7 @@ function createRoute(req, res, next) {
 function showRoute(req, res, next) {
   City
     .findById(req.params.id)
-    .populate('comments.createdBy visit')
+    .populate('comments.createdBy visitors')
     .exec()
     .then((city) => {
       if(!city) return res.notFound();

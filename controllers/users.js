@@ -1,5 +1,5 @@
 const User = require('../models/user');
-
+const City = require('../models/city');
 
 function indexRoute(req, res) {
   User
@@ -23,7 +23,13 @@ function showRoute(req, res) {
     .exec()
     .then((user) => {
       if(!user) return res.status(404).end('Not Found');
-      res.render('users/show', { user });
+      City
+        .find({'visitors': user.id})
+        .exec()
+        .then((cities) =>{
+          res.render('users/show', { user, cities });
+        });
+
     })
     .catch((err) => {
       res.status(500).end(err);

@@ -46,6 +46,12 @@ router.route('/cities/:id')
   .put(secureRoute, cities.update)
   .delete(secureRoute, cities.delete);
 
+router.route('/cities/:id/visitors')
+  .post(secureRoute, cities.addVisitor);
+
+// router.route('/cities/:id/visitors/:visitorId')
+//   .delete(secureRoute, cities.deleteVisitor);
+
 router.route('/cities/:id/comments')
   .post(secureRoute, cities.createComment);
 
