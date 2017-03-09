@@ -12,16 +12,18 @@
 .container-fluid.new-city
  {
   h1 {
+    font-family: 'Gochi Hand', cursive;
     font-size: 130px;
-    transform: translate(15%, 125%);
+    transform: translate(-10%, 100%);
   }
   form {
     // background-color: red;
     width: 70%;
-    margin-top: 35%;
+    margin-top: 25%;
     transform: translate(25%, -60%);
     padding: 50px;
     letter-spacing: 1px;
+
     text-transform: uppercase;
     font-weight: bold;
     font-size: 16px;
@@ -78,9 +80,18 @@ h3,
   margin-top: 100px;
 }
 
-.city{
-  background: red;
-  text-align: center;
+.city {
+  // background: red;
+  margin-top: 10%;
+  // transform: translate(25%, -60%);
+  // padding: 50px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  height: auto;
+
+  color: blue;
 
 }
 .profile {

@@ -18,10 +18,7 @@ function createRoute(req, res, next) {
   City
     .create(req.body)
     .then(() => res.redirect('/cities'))
-    .catch((err) => {
-      if(err.name === 'ValidationError') return res.badRequest(`/cities/${req.params.id}/edit`, err.toString());
-      next(err);
-    });
+    .catch(next);
 }
 
 function showRoute(req, res, next) {

@@ -54,14 +54,20 @@
     <% } %>
   </div>
 
-  <a href="/cities/<%= city.id %>/images/new">Add image</a>
-  <h1><%= city.name %></h1>
-  <div class="feed">
-    <% city.images.forEach((image) => { %>
-      <img src="<%= image.src %>" alt="<%= image.caption %>">
-      <p><%= image.caption %></p>
-    <% }) %>
+
+  <div class="row">
+      <% city.images.forEach((image) => { %>
+        <div class="col-sm-4">
+        <img class ="img-fluid" src="<%= image.src %>" alt="<%= image.caption %>">
+        <p><%= image.caption %></p>
+        </div>
+      <% }) %>
   </div>
+
+
+
+  <a href="/cities/<%= city.id %>/images/new">Add image</a>
+
 
   <form action="/cities/<%= city.id %>" method="POST">
     <input type="hidden" name="_method" value="DELETE"/>
