@@ -1,87 +1,70 @@
-<div class="container-fluid city">
- <div class="city">
+<div class="city">
 
+  <img src="<%= city.image %>" alt="<%= city.name %>">
+  <h2><%= city.name %></h2>
+  <h2><%= city.location %></h2>
+  <p><% while(city.stars--) { %> &star; <% } %></p>
 
-     <img src="<%= city.image %>" alt="<%= city.name %>">
+  <button type="button" class="toggle-btn" data-toggle="toggle-info">info</button>
+  <div id="toggle-info" class="toggle" style="display:none;">
+    <h4>Comments</h4>
+    <% city.comments.forEach((comment) => { %>
+      <p><%= comment.content %></p>
+      <small><%= comment.createdBy.username %></small>
+      <% if(locals.isAuthenticated && comment.ownedBy(user)) { %>
+        <form method="POST" action="/cities/<%= city.id %>/comments/<%= comment.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button>Delete</button>
+        </form>
+      <% } %>
+    <% }) %>
 
-   
-   <h2><%= city.name %></h2>
-   <h2><%= city.location %></h2>
-   <p>
-     <% while(city.stars--) { %> &star; <% } %>
-   </p>
+    <% if(locals.isAuthenticated) { %>
+      <section>
+        <h4>Leave a comment</h4>
+        <form method="POST" action="/cities/<%= city.id %>/comments">
+          <textarea name="content" id="content" placeholder="Comment"></textarea>
+          <button class="button">Leave a comment</button>
+        </form>
+      </section>
+    <% } %>
+  </div>
 
+  <button type="button" class="toggle-btn" data-toggle="toggle-visitors">visitors</button>
+  <div id="toggle-visitors" class="toggle" style="display:none;">
+    <h4>Visitors</h4>
+    <% city.visitors.forEach((visitor) => { %>
+      <p><%= visitor.username %></p>
+      <a href="/visitors/<%= visitor.id %>"><img src="<%= visitor.imageSRC %>" alt="<%= visitor.username %>">
 
+      <% if(locals.isAuthenticated ) { %>
+        <form method="POST" action="/cities/<%= city.id %>/visitors/<%= visitor.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button>Delete</button>
+        </form>
+      <% } %>
+    <% }) %>
 
-       <button type="button" class="toggle-btn">info</button>
-       <div class="toggle">
-           <h4>Comments</h4>
-           <% city.comments.forEach((comment) => { %>
-             <p><%= comment.content %></p>
-             <small><%= comment.createdBy.username %></small>
-             <% if(locals.isAuthenticated && comment.ownedBy(user)) { %>
-               <form method="POST" action="/cities/<%= city.id %>/comments/<%= comment.id %>">
-               <input type="hidden" name="_method" value="DELETE">
-               <button>Delete</button>
-             </form>
-           <% } %>
-         <% }) %>
+    <% if(locals.isAuthenticated) { %>
+      <section>
+        <form method="POST" action="/cities/<%= city.id %>/visitors">
+          <button class="button">wanna visit?</button>
+        </form>
+      </section>
+    <% } %>
+  </div>
 
-         <% if(locals.isAuthenticated) { %>
-           <section>
-             <h4>Leave a comment</h4>
-             <form method="POST" action="/cities/<%= city.id %>/comments">
-               <textarea name="content" id="content" placeholder="Comment"></textarea>
-               <button class="button">Leave a comment</button>
-             </form>
+  <a href="/cities/<%= city.id %>/images/new">Add image</a>
+  <h1><%= city.name %></h1>
+  <div class="feed">
+    <% city.images.forEach((image) => { %>
+      <img src="<%= image.src %>" alt="<%= image.caption %>">
+      <p><%= image.caption %></p>
+    <% }) %>
+  </div>
 
-         <% } %>
-       </div>
-
-       <button type="button" class="toggle-btn">visitors</button>
-       <div class="toggle">
-         <h4>Visitors</h4>
-         <% city.visitors.forEach((visitor) => { %>
-           <p> <%= visitor.username %></p>
-             <a href="/visitors/<%= visitor.id %>"><img src="<%= visitor.imageSRC %>" alt="<%= visitor.username %>">
-
-           <% if(locals.isAuthenticated ) { %>
-             <form method="POST" action="/cities/<%= city.id %>/visitors/<%= visitor.id %>">
-             <input type="hidden" name="_method" value="DELETE">
-             <button>Delete</button>
-           </form>
-         <% } %>
-       <% }) %>
-
-       </section>
-
-       <% if(locals.isAuthenticated) { %>
-         <section>
-
-           <form method="POST" action="/cities/<%= city.id %>/visitors">
-             <button class="button">wanna visit?</button>
-           </form>
-         </section>
-       <% } %>
-       </div>
-
-
-
- <a href="/cities/<%= city.id %>/images/new">Add image</a>
-     <h1><%= city.name %></h1>
-     <div class="feed">
-       <% city.images.forEach((image) => { %>
-         <img src="<%= image.src %>" alt="<%= image.caption %>">
-         <p><%= image.caption %></p>
-       <% }) %>
-     </div>
-
-     <form action="/cities/<%= city.id %>" method="POST">
-       <input type="hidden" name="_method" value="DELETE"/>
-       <button>Delete</button>
-   </form>
-
-
- </div>
-
+  <form action="/cities/<%= city.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE"/>
+    <button>Delete</button>
+  </form>
 </div>

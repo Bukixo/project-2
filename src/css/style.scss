@@ -1,5 +1,6 @@
 .container-fluid {
-  margin-bottom: 70px;
+  margin-bottom: 80px;
+  margin-top: 80px;
 }
 
 
@@ -7,7 +8,8 @@
 .container-fluid.register,
 .container-fluid.image,
 .container-fluid.edit,
-.container-fluid.new-image
+.container-fluid.new-image,
+.container-fluid.new-city
  {
   h1 {
     font-size: 130px;
@@ -79,8 +81,6 @@ h3,
 .city{
   background: red;
   text-align: center;
-  transform: translateY(10%);
-  margin-top: 100px;
 
 }
 .profile {

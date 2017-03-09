@@ -9,6 +9,10 @@ $(() => {
 
   const cities = $map.data('cities');
 
+  $('.toggle-btn').on('click', (e) => {
+    const divId = `#${$(e.target).data('toggle')}`;
+    $(divId).toggle();
+  });
 
   if(cities) {
     cities.forEach((city) => {
@@ -51,12 +55,5 @@ $(() => {
       window.location.replace(`/cities/${this.id}`);
     });
   }
-
-  $(document).ready(function(){
-      
-    $('.toggle-btn').click(function(){
-      $('.toggle').toggle(50);
-    });
-  });
 
 });

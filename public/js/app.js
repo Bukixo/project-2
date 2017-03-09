@@ -11,6 +11,11 @@ $(function () {
 
   var cities = $map.data('cities');
 
+  $('.toggle-btn').on('click', function (e) {
+    var divId = '#' + $(e.target).data('toggle');
+    $(divId).toggle();
+  });
+
   if (cities) {
     cities.forEach(function (city) {
       location = city.name;
@@ -51,11 +56,4 @@ $(function () {
       window.location.replace('/cities/' + this.id);
     });
   }
-
-  $(document).ready(function () {
-
-    $('.toggle-btn').click(function () {
-      $('.toggle').toggle(50);
-    });
-  });
 });

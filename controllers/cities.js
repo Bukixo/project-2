@@ -86,14 +86,14 @@ function createCommentRoute(req, res, next) {
   req.body.createdBy = req.user; // attaches user on the comment
 
   City
-  .findById(req.params.id)
-  .exec()
-  .then((city) => {
-    if(!city) return res.notFound();
+    .findById(req.params.id)
+    .exec()
+    .then((city) => {
+      if(!city) return res.notFound();
 
-    city.comments.push(req.body); // create an embedded record
-    return city.save();
-  })
+      city.comments.push(req.body); // create an embedded record
+      return city.save();
+    })
     .then((city) => res.redirect(`/cities/${city.id}`))
     .catch(next);
 }
@@ -109,9 +109,8 @@ function deleteCommentRoute(req, res, next) {
 
       return city.save();
     })
-
-  .then((city) => res.redirect(`/cities/${city.id}`))
-  .catch(next);
+    .then((city) => res.redirect(`/cities/${city.id}`))
+    .catch(next);
 }
 
 
@@ -134,14 +133,16 @@ function createImageRoute(req, res, next) {
   // For some reason multer's req.body doesn't behave like body-parser's
   req.body = Object.assign({}, req.body);
 
-  req.user.images.push(req.body);
-
-  req.user
-    .save()
-    .then(() => res.redirect('/cities'))
+  City
+    .findById(req.params.id)
+    .exec()
+    .then((city) => {
+      city.images.push(req.body);
+      return city.save();
+    })
+    .then(() => res.redirect(`/cities/${req.params.id}`))
     .catch((err) => {
-      console.log(err);
-      if(err.name === 'ValidationError') return res.badRequest(`/cities/images/new`, err.toString());
+      if(err.name === 'ValidationError') return res.badRequest(`/cities/${req.params.id}/images/new`, err.toString());
       next(err);
     });
 }

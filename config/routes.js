@@ -68,7 +68,7 @@ router.route('/user/images')
 router.route('/cities/:id/images/new')
   .get(secureRoute, cities.newImage);
 
-router.route('/city/images')
+router.route('/cities/:id/images')
   .post(secureRoute, upload.single('filename'), cities.createImage);
 
 

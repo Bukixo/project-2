@@ -1,28 +1,26 @@
-<main>
-  <div class="container">
-    <h1>New City</h1>
-    <form method="POST" action="/cities/new">
-      <div>
-        <label for="name">City Name</label>
-        <input type="text" name="name" id="name">
+
+
+<div class="container-fluid new-city">
+  <h1>WANDERFUL</h1>
+
+    <form class="form-horizontal" method="POST" action="/cities/new">
+      <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">City Name</label>
+        <div class="col-sm-10">
+          <input type="location" class="form-control" id="location" placeholder="Country" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="location" class="col-sm-2 control-label">Country</label>
+        <div class="col-sm-10">
+          <input type="location" class="form-control" id="location" placeholder="location" required>
+        </div>
+      </div>
+      <label for="stars" class="col-sm-2 control-label">Stars</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="stars" placeholder="stars" required>
       </div>
 
-      <div>
-        <label for="location">Location</label>
-        <input type="text" name="location" id="location">
-      </div>
-
-      <div>
-      <label for="stars">Stars</label>
-      <input type="number" name="stars" id="stars">
-    </div>
-
-    <%# <div>
-      <label for="image">Image</label>
-      <input type="text" name="image" id="image">
-    </div>%>
-
-      <button>Create</button>
+    <button>Add</button>
     </form>
-  </div>
-</main>
+    </div>
