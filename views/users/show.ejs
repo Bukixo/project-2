@@ -1,38 +1,37 @@
-<main>
-  <div class="container">
-    <h1>Show -- User Profile</h1>
+  <div class="container-fluid profile ">
+    <div class="row">
 
+      <img src="<%= user.imageSRC %>" alt="<%= user.username %>" class="rounded-circle mx-auto d-block">
+    </div>
     <h1><%= user.username %></h1>
     <h2><%= user.age %></h2>
     <h3><%= user.location %></h3>
 
-  
 
-  <% cities.forEach((city) => { %>
-    <button><a href="/cities/<%= city.id %>/"><%= city.name %></a></button>
-  <% }) %>
+      <div class="col-6 col-md-12">
+
+        <a href="/users/<%= user.id %>/edit">Edit</a>
+
+        <a href="/cities/new">create new city</a>
+
+        <a href="/users/<%= user.id %>/images/new">Add image</a>
 
 
-  <img src="<%= user.imageSRC %>" alt="<%= user.username %>">
+      </div>
 
-  <button><a href="/cities/new">create new city</a></button>
 
-  <button><a href="/users/<%= user.id %>/edit">Edit</a></button>
 
-  <a href="/users/<%= user.id %>/images/new">Add image</a>
 
-  <hr>
-  <h1><%= user.username %>'s images</h1>
-  <div class="feed">
-    <% user.images.forEach((image) => { %>
-      <img src="<%= image.src %>" alt="<%= image.caption %>">
-      <p><%= image.caption %></p>
-    <% }) %>
-  </div>
-
-  <form action="/users/<%= user.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE"/>
-    <button>Delete</button>
-</form>
-</div>
-</main>
+      <div class="row">
+            <% user.images.forEach((image) => { %>
+          <div class="col-sm-4">
+          <img class ="img-fluid" src="<%= image.src %>" alt="<%= image.caption %>">
+          <p class="img-caption"><%= image.caption %></p>
+          </div>
+        <% }) %>
+     </div>
+     <form  action="/users/<%= user.id %>" method="POST">
+               <input type="hidden" name="_method" value="DELETE"/>
+               <button>Delete Account</button>
+     </form>
+      </div>

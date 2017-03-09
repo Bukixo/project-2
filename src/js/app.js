@@ -7,14 +7,17 @@ $(() => {
   let map = null;
   let location = null
 
-  const cities = $('#map').data('cities');
-  console.log(cities);
-  cities.forEach((city) => {
-    location = city.name;
-    console.log(location);
-    return location;
+  const cities = $map.data('cities');
 
-  });
+
+  if(cities) {
+    cities.forEach((city) => {
+      location = city.name;
+      console.log(location);
+      return location;
+
+    });
+  }
 
   if ($map.length) getCityLocation();
 
@@ -49,5 +52,11 @@ $(() => {
     });
   }
 
+  $(document).ready(function(){
+      
+    $('.toggle-btn').click(function(){
+      $('.toggle').toggle(50);
+    });
+  });
 
 });

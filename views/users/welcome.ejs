@@ -10,3 +10,10 @@
 <button><a href="/users/<%= user.id %>">profile</a></button>
     </li>
 </ul>
+<div class =infobox >
+  <button type="button" class="toggle-btn">Saved cities</button>
+  <div class="toggle">
+    <% cities.forEach((city) => { %>
+      <a href="/cities/<%= city.id %>/"><%= city.name %></a>
+    <% }) %>
+  </div>

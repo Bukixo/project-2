@@ -9,13 +9,15 @@ $(function () {
   var map = null;
   var location = null;
 
-  var cities = $('#map').data('cities');
-  console.log(cities);
-  cities.forEach(function (city) {
-    location = city.name;
-    console.log(location);
-    return location;
-  });
+  var cities = $map.data('cities');
+
+  if (cities) {
+    cities.forEach(function (city) {
+      location = city.name;
+      console.log(location);
+      return location;
+    });
+  }
 
   if ($map.length) getCityLocation();
 
@@ -49,4 +51,11 @@ $(function () {
       window.location.replace('/cities/' + this.id);
     });
   }
+
+  $(document).ready(function () {
+
+    $('.toggle-btn').click(function () {
+      $('.toggle').toggle(50);
+    });
+  });
 });
