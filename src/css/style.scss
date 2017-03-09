@@ -6,13 +6,15 @@
 .container-fluid.login,
 .container-fluid.register,
 .container-fluid.image,
-.container-fluid.edit {
+.container-fluid.edit,
+.container-fluid.new-image
+ {
   h1 {
     font-size: 130px;
     transform: translate(15%, 125%);
   }
   form {
-    background-color: red;
+    // background-color: red;
     width: 70%;
     margin-top: 35%;
     transform: translate(25%, -60%);
@@ -40,15 +42,47 @@
   }
 }
 
-.container.register {
+.container.register,
+
+{
   section{
     margin-top: 50%;
   }
 
 }
 
+h1,
+h2,
+h3,
+{
+  text-align: center;
+  padding: 5px;
+}
+.atags {
+  text-align: center;
+  padding-bottom: 10px;
+}
 
+.box {
+  background: red;
+  // transform: translate(300%, 80%);
+  height: 500px;
+  width: 20%;
+  display: inline-block;
+  float:right;
+}
 
+.cities{
+  margin-top: 100px;
+}
+
+.city{
+  background: red;
+  text-align: center;
+  transform: translateY(10%);
+  margin-top: 100px;
+
+}
 .profile {
     // background: red;
     margin-top: 10%;
@@ -62,41 +96,15 @@
     width: 70%;
     color: blue;
 
-    // .profile-image{
-    //   // width: 30%;
-    //   // height: 30%;
-    //   padding: 0;
-    //   margin-left: 20%;
-    // }
-    .user-img{
-      width: 30%;
-      height: 30%;
-      display: inline-block;
-      float: right;
-      padding-right: 20px;
-      margin-right: 20px;
-
-    }
-    .img-caption{
-      // display: inline-block;
-      // float: right;
-      // padding-right: 20px;
-      // margin-right: 20px;
-
-    }
-    .dropdown{
-      // padding: 0;
-      // margin-left: 70%;
-      // margin-top: 70px;
-      // transform: translate(60%,-750%);
-
-    }
 }
 
 
 #map {
-  width: 100%;
-  height: 300px;
+  width: 70%;
+  height: 500px;
+  // transform: translate(5%, 30%);
+  display:inline-block;
+
 }
 
 header {

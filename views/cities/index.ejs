@@ -1,23 +1,7 @@
-<main>
-  <div class="container">
-    <% cities.forEach((city) => { %>
-      <div>
-        <a href="/cities/<%= city.id %>">
-          <img src="<%= city.image %>" alt="<%= city.name %>">
 
-
-            <%= city.name %><br>
-            <%= city.location %><br>
-
-
-
-          <p>
-            <% while(city.stars--) { %> &star; <% } %>
-          </p>
-        </a>
-      </div>
-    <% }) %>
-
+  <div class="cities">
     <div id="map" data-cities="<%= JSON.stringify(cities) %>"></div>
+    <div class="box">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>
+    </div>
   </div>
-</main>

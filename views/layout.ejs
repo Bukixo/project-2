@@ -36,17 +36,20 @@
   </header>
 
 
-    <% for(const type in messages) { %>
-      <div class="<%= type %>">
-        <h5><%= messages[type] %></h5>
-      </div>
-    <% } %>
-    <main>
+  <% for(const type in messages) { %>
+        <div class="<%= type %>">
+          <h5><%= messages[type] %></h5>
+        </div>
+      <% } %>
+
+    <main class="container-fluid">
       <%- body %>
     </main>
-  </body>
-</html>
+
+
 
 <footer>
       <p>&copy; General Assembly 2017</p>
-    </footer>
+</footer>
+  </body>
+</html>

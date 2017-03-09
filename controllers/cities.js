@@ -115,8 +115,16 @@ function deleteCommentRoute(req, res, next) {
 }
 
 
-function newImageRoute(req, res) {
-  res.render(`cities/newImage`);
+function newImageRoute(req, res, next) {
+  City
+    .findById(req.params.id)
+    .populate('comments.createdBy visitors')
+    .exec()
+    .then((city) => {
+      if(!city) return res.notFound();
+      return res.render('cities/newImage', { city });
+    })
+    .catch(next);
 }
 
 
