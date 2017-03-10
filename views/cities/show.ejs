@@ -5,7 +5,7 @@
   <h2><%= city.location %></h2>
   <p><% while(city.stars--) { %> &star; <% } %></p>
 
-  <button type="button" class="toggle-btn" data-toggle="toggle-info">info</button>
+  <button type="button" class="toggle-btn btn btn-outline-success" data-toggle="toggle-info">info</button>
   <div id="toggle-info" class="toggle" style="display:none;">
     <h4>Comments</h4>
     <% city.comments.forEach((comment) => { %>
@@ -14,7 +14,7 @@
       <% if(locals.isAuthenticated && comment.ownedBy(user)) { %>
         <form method="POST" action="/cities/<%= city.id %>/comments/<%= comment.id %>">
           <input type="hidden" name="_method" value="DELETE">
-          <button>Delete</button>
+          <button type="button" class="btn btn-outline-success">Delete</button>
         </form>
       <% } %>
     <% }) %>
@@ -24,13 +24,13 @@
         <h4>Leave a comment</h4>
         <form method="POST" action="/cities/<%= city.id %>/comments">
           <textarea name="content" id="content" placeholder="Comment"></textarea>
-          <button class="button">Leave a comment</button>
+          <button type="button" class="btn btn-outline-success">Leave a comment</button>
         </form>
       </section>
     <% } %>
   </div>
 
-  <button type="button" class="toggle-btn" data-toggle="toggle-visitors">visitors</button>
+  <button type="button" class="toggle-btn btn btn-outline-success" data-toggle="toggle-visitors">visitors</button>
   <div id="toggle-visitors" class="toggle" style="display:none;">
     <h4>Visitors</h4>
     <% city.visitors.forEach((visitor) => { %>
@@ -40,7 +40,7 @@
       <% if(locals.isAuthenticated ) { %>
         <form method="POST" action="/cities/<%= city.id %>/visitors/<%= visitor.id %>">
           <input type="hidden" name="_method" value="DELETE">
-          <button>Delete</button>
+          <button type="button" class="btn btn-outline-success">Delete</button>
         </form>
       <% } %>
     <% }) %>
@@ -48,7 +48,7 @@
     <% if(locals.isAuthenticated) { %>
       <section>
         <form method="POST" action="/cities/<%= city.id %>/visitors">
-          <button class="button">wanna visit?</button>
+          <button type="button" class="btn btn-outline-success">wanna visit?</button>
         </form>
       </section>
     <% } %>
@@ -71,6 +71,6 @@
 
   <form action="/cities/<%= city.id %>" method="POST">
     <input type="hidden" name="_method" value="DELETE"/>
-    <button>Delete</button>
+    <button type="button" class="btn btn-outline-success">Delete</button>
   </form>
 </div>

@@ -20,7 +20,8 @@ s
   }
   img {
     margin-left: 40%;
-    transform: translate(900%, 10%);
+    transform: translate(930%,-165%);
+    height: 36px;
   }
   form {
     // background-color: red;
@@ -29,6 +30,7 @@ s
     transform: translate(44%, -50%);
     padding: 50px;
     letter-spacing: 1px;
+    border-color: blue;
 
     text-transform: uppercase;
     font-weight: bold;
@@ -39,6 +41,9 @@ s
     border: none;
 
     }
+     .form-control{
+       border-color: green;
+     }
     // .btn-insta  {
     //   width: 80%;
     //
@@ -56,8 +61,16 @@ s
     // }
   }
 }
-
-
+p {
+  color: #dbe9d8;
+}
+a{
+  color: green;
+  style: none;
+}
+a:hover {
+   color: #dbe9d8;
+}
 // h1{
 //   transform: translate(-30%,88%);
 // }
@@ -73,6 +86,11 @@ h3,
   text-align: center;
   padding: 5px;
   font-family: 'Ribeye', cursive;
+  color: black;
+}
+
+p{
+  color: black;
 }
 .atags {
   text-align: center;
