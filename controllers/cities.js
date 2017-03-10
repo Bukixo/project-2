@@ -54,7 +54,7 @@ function updateRoute(req, res, next) {
       if(!city) return res.notFound();
 
       for(const field in req.body) {
-        city[field] = req.body[field];
+        city[field] = req.body[flield];
       }
 
       return city.save();

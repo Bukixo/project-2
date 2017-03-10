@@ -1,3 +1,4 @@
+s
 .container-fluid {
   margin-bottom: 80px;
   margin-top: 80px;
@@ -13,14 +14,19 @@
  {
   h1 {
     font-family: 'Gochi Hand', cursive;
-    font-size: 130px;
-    transform: translate(-10%, 100%);
+    font-size: 150px;
+    transform: translate(-5%, 50%);
+    color: #dbe9d8;
+  }
+  img {
+    margin-left: 40%;
+    transform: translate(900%, 10%);
   }
   form {
     // background-color: red;
     width: 70%;
-    margin-top: 25%;
-    transform: translate(25%, -60%);
+    margin-top: 20%;
+    transform: translate(44%, -50%);
     padding: 50px;
     letter-spacing: 1px;
 
@@ -28,32 +34,37 @@
     font-weight: bold;
     font-size: 16px;
 
-    .btn-insta  {
-      width: 80%;
-      background-color: pink;
-      margin-top: 10px;
-      margin-left: 10%;
-      padding: 10px;
+    .btn {
+    background-color: #c2d4d8;
+    border: none;
 
     }
-    .btn-sign  {
-      width: 80%;
-      padding: 10px;
-      background-color: pink;
-      top: 30px;
-      margin-left: 10%;
-    }
+    // .btn-insta  {
+    //   width: 80%;
+    //
+    //   margin-top: 10px;
+    //   margin-left: 12%;
+    //   padding: 8px;
+    //
+    // }
+    // .btn-sign  {
+    //   width: 80%;
+    //   padding: 10px;
+    //
+    //   top: 30px;
+    //   margin-left: 12%;
+    // }
   }
 }
 
-.container.register,
 
-{
-  section{
-    margin-top: 50%;
-  }
-
-}
+// h1{
+//   transform: translate(-30%,88%);
+// }
+// section {
+// transform: translate(-37%,28%);
+//
+// }
 
 h1,
 h2,
@@ -61,6 +72,7 @@ h3,
 {
   text-align: center;
   padding: 5px;
+  font-family: 'Ribeye', cursive;
 }
 .atags {
   text-align: center;
@@ -70,10 +82,14 @@ h3,
 .box {
   background: red;
   // transform: translate(300%, 80%);
-  height: 500px;
+  height:250px;
   width: 20%;
   display: inline-block;
   float:right;
+
+  border: 1px solid #dbe9d8;
+  background: #f2efe8;
+  padding: 20px;
 }
 
 .cities{
@@ -125,7 +141,7 @@ header {
   right: 0;
   z-index: 2;
   height: 70px;
-    background: blue;
+  background: #b0aac2;
 
   nav {
     ul {
@@ -154,8 +170,9 @@ header {
 }
 
 
+
 footer {
-  background-color: rgba(20, 20, 20, 1);
+  background-color:#b0aac2;
   padding: 10px 0;
   text-align: center;
   color: white;
