@@ -1,7 +1,7 @@
 module.exports = {
   instagram: {
     loginURL: 'https://api.instagram.com/oauth/authorize',
-    redirectUri: 'http://localhost:3000/oauth/instagram',
+    redirectUri: process.env.NODE_ENV === 'production' ? 'https://cryptic-shelf-72611.herokuapp.com/oauth/instagram' : 'http://localhost:3000/oauth/instagram',
     clientId: process.env.INSTA_CLIENT_ID,
     clientSecret: process.env.INSTA_CLIENT_SECRET,
     accessTokenURL: 'https://api.instagram.com/oauth/access_token',
