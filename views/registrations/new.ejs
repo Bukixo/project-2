@@ -1,54 +1,41 @@
-<div class="container-fluid register">
+<div class="container">
 
   <h1>Wanderful</h1>
 
-  <section>
-    <form class="form-horizontal" method="POST" action="/register" enctype="multipart/form-data" >
-      <div class="form-group">
-        <label for="username" class="col-sm-2 control-label">Username</label>
-        <div class="col-sm-10">
-          <input type="username" class="form-control" id="username" placeholder="username" required>
-        </div>
+  <div class="row justify-content-md-center box-register">
+    <div class="col-md-6 col-md-auto">
 
-      <div class="form-group">
-        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-        <div class="col-sm-10">
-          <input type="email" class="form-control" id="email" placeholder="Email" required>
-        </div>
-      </div>
+    <form method="POST" action="/register" enctype="multipart/form-data" >
 
-      <div class="form-group">
-        <label for="location" class="col-sm-2 control-label">location</label>
-        <div class="col-sm-10">
-          <input type="location" class="form-control" id="location" placeholder="location" required>
-        </div>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" name="email" id="email" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="email">Location</label>
+      <input type="text" name="location" id="location" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="image">Image</label>
+      <input type="file" name="image" id="image" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="passwordConfirmation">Password Confirmation</label>
+      <input type="password" name="passwordConfirmation" id="passwordConfirmation" class="form-control">
+    </div>
 
-        <div class="form-group">
-          <label for="image" class="col-sm-2 control-label">image</label>
-          <div class="col-sm-10">
-            <input type="file" class="form-control" id="image" placeholder="image" required>
-          </div>
+    <button class="btn btn-primary">Register</button>
+  </form>
 
-      <div class="form-group">
-        <label for="password" class="col-sm-2 control-label">Password</label>
-        <div class="col-sm-10">
-          <input type="password" class="form-control" id="password" placeholder="Password" required>
-        </div>
-
-        <div class="form-group">
-          <label for="passwordConfirmation" class="col-sm-2 control-label">Password Confirmation</label>
-          <div class="col-sm-10">
-            <input type="password" class="form-control" id="password" placeholder="Password Confirmation" required>
-          </div>
-
-      </div>
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <button type="button" class="btn btn-outline-success">register</button>
-        </div>
-      </div>
-    </form>
-
-  </section>
+</div>
+</div>
 
 </div>
