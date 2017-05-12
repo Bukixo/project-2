@@ -40,7 +40,7 @@ function editRoute(req, res, next) {
     .then((city) => {
       if(!city) return res.redirect();
       if(!city.ownedBy(req.user)) return res.unauthorized(`/cities/${city.id}`, 'You do not have permission to edit that resource');
-      return res.render('ciities/edit', { city });
+      return res.render('cities/edit', { city });
     })
     .catch(next);
 }
@@ -54,7 +54,7 @@ function updateRoute(req, res, next) {
       if(!city) return res.notFound();
 
       for(const field in req.body) {
-        city[field] = req.body[flield];
+        city[field] = req.body[field];
       }
 
       return city.save();

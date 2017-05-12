@@ -1,27 +1,39 @@
-<div class="row">
+<div class="row justify-content-center">
   <img src="<%= user.imageSRC %>" alt="<%= user.username %>" class="rounded-circle mx-auto d-block">
 </div>
 
-<div class="col-md-4 col-md-offset-5">
-  <h1><%= user.username %></h1>
-  <h2><%= user.age %></h2>
-  <h3><%= user.location %></h3>
-</div>
-<div class="row">
+<div class="row justify-content-center">
   <div class="col-md-4">
+    <div class="card">
+    <div class="card-block">
+      <h1><%= user.username %></h1>
+      <h2><%= user.age %></h2>
+      <h3><%= user.location %></h3>
       <a href="/users/<%= user.id %>/edit">Edit |</a>
       <a href="/cities/new">Create new city |</a>
       <a href="/users/<%= user.id %>/images/new">Add image |</a>
+      <form  action="/users/<%= user.id %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE"/>
+            <button class="btn btn-outline-info">Delete Account</button>
+      </form>
+    </div>
+  </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-10">
-    <% user.images.forEach((image) => { %>
-      <div class="col-sm-4">
-        <img class ="img-fluid" src="<%= image.src %>" alt="<%= image.caption %>">
-        <p class="img-caption"><%= image.caption %></p>
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-block">
+        <div class="row">
+          <% user.images.forEach((image) => { %>
+            <div class="col-md-4">
+              <img class ="img-fluid" src="<%= image.src %>" alt="<%= image.caption %>">
+              <p class="img-caption"><%= image.caption %></p>
+            </div>
+          <% }) %>
+        </div>
       </div>
-    <% }) %>
-  </div>  
+    </div>
+  </div>
 </div>

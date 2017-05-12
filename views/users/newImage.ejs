@@ -1,16 +1,18 @@
-<main>
-    <div class="container-fluid new-image">
+<h1>Edit</h1>
 
-      <form method="POST" action="/users/<%= user.id %>/images" enctype="multipart/form-data">
-        <div>
-          <label for="filename">Image file</label>
-          <input type="file" name="filename" id="filename">
-        </div>
-        <div>
-          <label for="caption">Caption</label>
-          <textarea name="caption" id="caption"></textarea>
-        </div>
-        <button type="button" class="btn btn-outline-success">Add</button>
-      </form>
+<form method="POST" action="/users/<%= user.id %>/images" enctype="multipart/form-data">
+
+  <input type="hidden" name="_method" value="PUT">
+
+  <div>
+    <label for="filename">username</label>
+    <input type="file" name="filename" id="filename" >
   </div>
-</main>
+
+  <div>
+    <label for="caption">caption</label>
+    <textarea type="number" name="caption" id="caption" ></textarea>
+  </div>
+  
+  <button>Update</button>
+</form>

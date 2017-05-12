@@ -15,6 +15,7 @@ router.route('/users')
   .get(secureRoute, registrations.show)
   .post(secureRoute, users.create);
 
+
 router.route('/users/new')
   .get(secureRoute, users.new); //later redirect this to the city page
 

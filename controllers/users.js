@@ -97,7 +97,7 @@ function deleteRoute(req, res) {
 }
 
 function newImageRoute(req, res) {
-  res.render(`users/newImage`);
+  res.render('users/newImage');
 }
 
 
@@ -114,7 +114,7 @@ function createImageRoute(req, res, next) {
     .then(() => res.redirect('/users'))
     .catch((err) => {
       console.log(err);
-      if(err.name === 'ValidationError') return res.badRequest(`/user/images/new`, err.toString());
+      if(err.name === 'ValidationError') return res.badRequest('/user/images/new', err.toString());
       next(err);
     });
 }

@@ -1,24 +1,21 @@
-<div class="container-fluid new-city">
-  <h1>Create a new City!</h1>
+<h1>New</h1>
 
-    <form class="form-horizontal" method="POST" action="/cities">
-      <div class="form-group">
-        <label for="name" class="col-sm-2 control-label">City Name</label>
-        <div class="col-sm-10">
-          <input type="location" class="form-control" id="location" placeholder="Country" name="name" required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="location" class="col-sm-2 control-label">Country</label>
-        <div class="col-sm-10">
-          <input type="location" class="form-control" id="location" placeholder="location" name="location" required>
-        </div>
-      </div>
-      <label for="stars" class="col-sm-2 control-label">Stars</label>
-      <div class="col-sm-10">
-        <input type="number" class="form-control" id="stars" name="stars" placeholder="stars" required>
-      </div>
+<form method="POST" action="/cities">
+  <div>
+    <label for="name">name</label>
+    <input type="text" name="name" id="name">
+  </div>
 
-    <button type="button" class="btn btn-outline-success">Add</button>
-    </form>
-    </div>
+  <div>
+    <label for="location">Country Name</label>
+    <input type="text" name="location" id="location">
+  </div>
+
+
+
+  <div class="col-sm-10">
+    <input type="number" class="form-control" id="stars" name="stars" placeholder="stars" required>
+  </div>
+
+  <button>Create</button>
+</form>
