@@ -1,0 +1,74 @@
+footer {
+  position:fixed;
+   left:0px;
+   bottom:0px;
+   height:40px;
+   width:100%;
+   background: $body-colour;
+   text-align: center;
+   color: $brand-third;
+
+}
+
+
+  nav {
+    background: $body-colour;
+    height: 60px;
+    text-align: center;
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        display: inline-block;
+        padding: 10px;
+      }
+      // &.menu{
+      //   color: white;
+      //   cursor: pointer;
+      //   display: none;
+      //   font-size: 20px;
+      // }
+      a {
+        color: white;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+      a:hover{
+        color: $brand-primary-colour;
+        text-decoration: none;
+      }
+    }
+  }
+
+@media only screen and (max-width: 575px) {
+  header {
+    height: auto;
+    nav {
+      ul {
+        li {
+          // display: block;
+          float: none;
+          text-align: center;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  header {
+    height: auto;
+    nav {
+      ul {
+        li {
+          // display: block;
+          padding-top: 15px;
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}

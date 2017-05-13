@@ -10,3 +10,15 @@ transform: translate(0%, 30%);
   transform: translateY(0%);
   // m-bottom: 50px;
 }
+
+@media only screen and (max-width: 575px) {
+  .login {
+  @include center;
+  transform: translate(0%, 15%);
+  }
+
+  .register{
+    margin-bottom: 30px;
+    // m-bottom: 50px;
+  }
+}
