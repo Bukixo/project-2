@@ -1,0 +1,12 @@
+@import "mixins";
+@import "variables";
+
+.login {
+@include center;
+transform: translate(0%, 30%);
+}
+
+.register{
+  transform: translateY(0%);
+  // m-bottom: 50px;
+}

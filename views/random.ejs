@@ -1,3 +1,46 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="/about">About Us |</a>
+      <% if (!locals.isAuthenticated) { %>
+      <li role="presentation" class="active"><a href="/login">Login |</a></li>
+
+      <li role="presentation" class="active"><a href="/register">Register |</a></li>
+      <% } else { %>
+      <li role="presentation" class="active"><a href="/logout">Logout |</a></li>
+
+      <li role="presentation" class="active"><a href="/users/<%= user.id %>">Profile |</a></li>
+
+      <li role="presentation" class="active"><a href="/cities">Cities</a></li>
+
+      <% } %>
+    </ul>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

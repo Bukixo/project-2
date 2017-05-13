@@ -16,23 +16,39 @@
 </head>
   <body>
     <header class="container">
-      <nav class="navbar navbar-default navbar-fixed-top">
-          <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="/about">About Us |</a>
-            <% if (!locals.isAuthenticated) { %>
-            <li role="presentation" class="active"><a href="/login">Login |</a></li>
 
-            <li role="presentation" class="active"><a href="/register">Register |</a></li>
-            <% } else { %>
-            <li role="presentation" class="active"><a href="/logout">Logout |</a></li>
 
-            <li role="presentation" class="active"><a href="/users/<%= user.id %>">Profile |</a></li>
+      <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Navbar</a>
 
-            <li role="presentation" class="active"><a href="/cities">Cities</a></li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
 
-            <% } %>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+
+
           </ul>
+        </div>
       </nav>
+
+
     </header>
 
 
@@ -42,8 +58,8 @@
 
 
 
-<%# <footer>
+<footer>
       <p>&copy; General Assembly 2017</p>
-</footer>%>
+</footer>
   </body>
 </html>
