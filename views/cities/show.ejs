@@ -1,24 +1,27 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-1">
-       <h2><%= city.name %></h2>
-    </div>
-  </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-block">
+          <div class="row justify-content-center">
+            <div class="col-md-12">
+               <h2><%= city.name %></h2>
+            </div>
+          </div>
+          <% if(locals.isAuthenticated) { %>
+            <section>
+            <a href="/cities/<%= city.id %>/edit">Edit |</a>
+            <a href="/cities/<%= city.id %>/images/new">Add image</a>
+            <form action="/cities/<%= city.id %>" method="POST">
+              <input type="hidden" name="_method" value="DELETE"/>
+              <button >Delete</button>
+            </form>
+            </section>
+          <% } %>
+        </div>
+      </div>
 
-  <div class="row justify-content-center">
-    <div class="col-md-3">
 
-      <% if(locals.isAuthenticated) { %>
-        <section>
-        <a href="/cities/<%= city.id %>/edit">Edit |</a>
-        <a href="/cities/<%= city.id %>/images/new">Add image</a>
-        <form action="/cities/<%= city.id %>" method="POST">
-          <input type="hidden" name="_method" value="DELETE"/>
-          <button type="button" class="btn btn-outline-success">Delete</button>
-        </form>
-
-        </section>
-      <% } %>
     </div>
   </div>
   <div class="row justify-content-center">
@@ -27,7 +30,7 @@
         <div class="card-block">
           <div class="row">
             <div class="col-md-4">
-              <button type="button" class="toggle-btn btn btn-outline-success" data-toggle="toggle-info">City Info</button>
+              <button class="toggle-btn" data-toggle="toggle-info">City Info</button>
             </div>
             <div class="col-md-8">
               <div id="toggle-info" class="toggle" style="display:none;">
@@ -40,58 +43,27 @@
 
           <div class="row">
             <div class="col-md-4">
-              <button type="button" class="toggle-btn btn btn-outline-success" data-toggle="toggle-comment">Leave comments</button>
+              <button class="toggle-btn" data-toggle="toggle-comment">Leave comments</button>
             </div>
             <div class="col-md-8">
               <div id="toggle-comment" class="toggle" style="display:none;">
-                <h4>Comments</h4>
+                <p>Comments</p>
                 <% city.comments.forEach((comment) => { %>
                   <p><%= comment.content %></p>
                   <small><%= comment.createdBy.username %></small>
                   <% if(locals.isAuthenticated && comment.ownedBy(user)) { %>
                     <form method="POST" action="/cities/<%= city.id %>/comments/<%= comment.id %>">
                       <input type="hidden" name="_method" value="DELETE">
-                      <button type="button" class="btn btn-outline-success">Delete</button>
+                      <button>Delete</button>
                     </form>
                   <% } %>
                 <% }) %>
 
                 <% if(locals.isAuthenticated) { %>
                   <section>
-                    <h4>Leave a comment</h4>
                     <form method="POST" action="/cities/<%= city.id %>/comments">
                       <textarea name="content" id="content" placeholder="Comment"></textarea>
-                      <button type="button" class="btn btn-outline-success">Leave a comment</button>
-                    </form>
-                  </section>
-                <% } %>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-4">
-              <button type="button" class="toggle-btn btn btn-outline-success" data-toggle="toggle-visitors">visitors</button>
-            </div>
-            <div class="col-md-8">
-              <div id="toggle-visitors" class="toggle" style="display:none;">
-                <h4>Visitors</h4>
-                <% city.visitors.forEach((visitor) => { %>
-                  <p><%= visitor.username %></p>
-                  <a href="/visitors/<%= visitor.id %>"><img src="<%= visitor.imageSRC %>" alt="<%= visitor.username %>">
-
-                  <% if(locals.isAuthenticated ) { %>
-                    <form method="POST" action="/cities/<%= city.id %>/visitors/<%= visitor.id %>">
-                      <input type="hidden" name="_method" value="DELETE">
-                      <button type="button" class="btn btn-outline-success">Delete</button>
-                    </form>
-                  <% } %>
-                <% }) %>
-
-                <% if(locals.isAuthenticated) { %>
-                  <section>
-                    <form method="POST" action="/cities/<%= city.id %>/visitors">
-                      <button type="button" class="btn btn-outline-success">wanna visit?</button>
+                      <button>Leave a comment</button>
                     </form>
                   </section>
                 <% } %>

@@ -2,5 +2,25 @@
 
     top: 50%;
     left: 50%;
-    
+
+}
+
+@mixin font-title{
+  font-family: 'Modak', cursive;
+  font-size: 70px;
+  color: $brand-primary-colour;
+  font-weight: 600;
+}
+
+@mixin font-subtitle {
+  font-family: 'Roboto', sans-serif;
+  font-size: 26px;
+  color: $body-colour;
+}
+
+@mixin font-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  color:#9B9B9B;
+
 }

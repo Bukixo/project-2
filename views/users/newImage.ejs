@@ -1,18 +1,27 @@
-<h1>Edit</h1>
+<div class="row justify-content-center user-image-upload">
+  <div class="col-md-8 col-xs-12">
+    <div class="card">
+      <div class="card-block">
+        <h2>Display your Wanderful experience</h2>
 
-<form method="POST" action="/users/<%= user.id %>/images" enctype="multipart/form-data">
+        <form method="POST" action="/users/<%= user.id %>/images" enctype="multipart/form-data">
 
-  <input type="hidden" name="_method" value="PUT">
+          <input type="hidden" name="_method" value="PUT">
 
-  <div>
-    <label for="filename">username</label>
-    <input type="file" name="filename" id="filename" >
+          <div>
+            <label for="filename">username</label>
+            <input type="file" name="filename" id="filename" >
+          </div>
+
+          <div>
+            <label for="caption">caption</label>
+            <textarea type="number" name="caption" id="caption" ></textarea>
+          </div>
+
+          <button class="col-md-12">Update</button>
+        </form>
+
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div>
-    <label for="caption">caption</label>
-    <textarea type="number" name="caption" id="caption" ></textarea>
-  </div>
-  
-  <button>Update</button>
-</form>

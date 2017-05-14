@@ -1,18 +1,29 @@
 <h1>Edit</h1>
 
-<form method="POST" action="/cities/<%= city.id %>/images" enctype="multipart/form-data">
+<div class="row justify-content-center">
+  <div class="col-6">
+    <div class="card">
+      <div class="card-block">
 
-  <input type="hidden" name="_method" value="PUT">
+        <form method="POST" action="/cities/<%= city.id %>/images" enctype="multipart/form-data">
 
-  <div>
-    <label for="filename">username</label>
-    <input type="file" name="filename" id="filename" >
+          <input type="hidden" name="_method" value="PUT">
+
+          <div>
+            <label for="filename">username</label>
+            <input type="file" name="filename" id="filename" >
+          </div>
+
+          <div>
+            <label for="caption">caption</label>
+            <textarea type="number" name="caption" id="caption" ></textarea>
+          </div>
+
+          <button class="col-md-12">Update</button>
+        </form>
+
+
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div>
-    <label for="caption">caption</label>
-    <textarea type="number" name="caption" id="caption" ></textarea>
-  </div>
-
-  <button>Update</button>
-</form>

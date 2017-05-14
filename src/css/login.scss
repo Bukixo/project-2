@@ -1,16 +1,41 @@
 @import "mixins";
 @import "variables";
 
+h1 .login {
+  transform: translate(0%, 70%)
+
+}
 .login {
 @include center;
-transform: translate(0%, 30%);
+transform: translate(0%, 20%);
 }
 
-.register{
-  transform: translateY(0%);
-  // m-bottom: 50px;
+.card {
+  .register {
+    transform: translateY(0%);
+    margin-bottom: 60px;
+  }
+
 }
 
+
+.user-edit,
+.new-city {
+  transform: translate(0%, 20%);
+}
+
+.map-info {
+  transform: translate(0%, -40%);
+}
+
+.user-image-upload {
+  transform: translate(0%, 20%);
+  padding: 30px;
+
+}
+.pic-box {
+  transform: translate(0%, -15%);
+}
 @media only screen and (max-width: 575px) {
   .login {
   @include center;

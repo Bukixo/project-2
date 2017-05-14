@@ -1,27 +1,26 @@
 <div class="row justify-content-center">
-  <img src="<%= user.imageSRC %>" alt="<%= user.username %>" class="rounded-circle mx-auto d-block">
+  <img src="<%= user.imageSRC %>" alt="<%= user.username %>" class="rounded-circle mx-auto d-block p-image">
 </div>
 
 <div class="row justify-content-center">
   <div class="col-md-4">
     <div class="card">
     <div class="card-block">
-      <h1><%= user.username %></h1>
-      <h2><%= user.age %></h2>
-      <h3><%= user.location %></h3>
+      <h2><%= user.username %> | <%= user.age %> | <%= user.location %></h2>
       <a href="/users/<%= user.id %>/edit">Edit |</a>
       <a href="/cities/new">Create new city |</a>
       <a href="/users/<%= user.id %>/images/new">Add image |</a>
+
       <form  action="/users/<%= user.id %>" method="POST">
         <input type="hidden" name="_method" value="DELETE"/>
-            <button class="btn btn-outline-info">Delete Account</button>
+            <button>Delete Account</button>
       </form>
     </div>
   </div>
   </div>
 </div>
 
-<div class="row justify-content-center">
+<div class="row justify-content-center pic-box">
   <div class="col-md-8">
     <div class="card">
       <div class="card-block">

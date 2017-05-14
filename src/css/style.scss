@@ -5,11 +5,35 @@
 
 body {
   background-color: $body-background;
+  @include font-text ;
+}
+a {
+  color: $body-colour;
+}
+a:hover {
+  color: $brand-primary-colour;
+}
+.ft {
+
+    color: white;
+
+  a:hover {
+    color: $body-colour;
+  }
+}
+h2 {
+  @include font-subtitle;
 }
 
+h1 {
+  @include font-title;
+}
 .card {
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  border: 1px solid $body-colour;
+    margin-bottom: 60px;
 }
+
 
 .container{
  // background-color: green;
@@ -19,8 +43,55 @@ body {
 
 }
 
+.p-image {
+  height: 190px;
+}
+button {
+  background: white;
+  color: grey;
+  border: 1px solid white;
 
+}
 
+button:hover,
+button:active {
+  letter-spacing: 5px;
+}
+
+button:after,
+button:before {
+  backface-visibility: hidden;
+  border: 1px solid rgba(#fff, 0);
+  bottom: 0px;
+  content: " ";
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  transition: all 280ms ease-in-out;
+  width: 0;
+}
+
+button:hover:after,
+button:hover:before {
+  backface-visibility: hidden;
+  border-color: $brand-primary-colour;
+  transition: width 350ms ease-in-out;
+  width: 70%;
+}
+
+button:hover:before {
+  bottom: auto;
+  top: 0;
+  width: 70%;
+}
+
+#map {
+  width: 90%;
+  height: 500px;
+  // transform: translate(5%, 30%);
+  display:inline-block;
+
+}
 
 
 

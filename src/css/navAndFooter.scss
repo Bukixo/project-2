@@ -15,6 +15,7 @@ footer {
     background: $body-colour;
     height: 60px;
     text-align: center;
+
     ul {
       list-style: none;
       padding: 0;
@@ -22,6 +23,7 @@ footer {
       li {
         display: inline-block;
         padding: 10px;
+      
       }
       // &.menu{
       //   color: white;
@@ -39,6 +41,15 @@ footer {
         color: $brand-primary-colour;
         text-decoration: none;
       }
+    }
+  }
+
+  .ft {
+
+      color: white;
+
+    a:hover {
+      color: $body-colour;
     }
   }
 

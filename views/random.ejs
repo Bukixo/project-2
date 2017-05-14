@@ -1,58 +1,31 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <ul class="nav nav-tabs">
-      <li role="presentation" class="active"><a href="/about">About Us |</a>
-      <% if (!locals.isAuthenticated) { %>
-      <li role="presentation" class="active"><a href="/login">Login |</a></li>
+/////////// Visitors////////////
 
-      <li role="presentation" class="active"><a href="/register">Register |</a></li>
-      <% } else { %>
-      <li role="presentation" class="active"><a href="/logout">Logout |</a></li>
+<%# <div class="row">
+  <div class="col-md-4">
+    <button type="button" class="toggle-btn btn btn-outline-success" data-toggle="toggle-visitors">visitors</button>
+  </div>
+  <div class="col-md-8">
+    <div id="toggle-visitors" class="toggle" style="display:none;">
+      <h4>Visitors</h4>
+      <% city.visitors.forEach((visitor) => { %>
+        <p><%= visitor.username %></p>
+        <a href="/visitors/<%= visitor.id %>"><img src="<%= visitor.imageSRC %>" alt="<%= visitor.username %>">
 
-      <li role="presentation" class="active"><a href="/users/<%= user.id %>">Profile |</a></li>
+        <% if(locals.isAuthenticated ) { %>
+          <form method="POST" action="/cities/<%= city.id %>/visitors/<%= visitor.id %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="button" class="btn btn-outline-success">Delete</button>
+          </form>
+        <% } %>
+      <% }) %>
 
-      <li role="presentation" class="active"><a href="/cities">Cities</a></li>
-
+      <% if(locals.isAuthenticated) { %>
+        <section>
+          <form method="POST" action="/cities/<%= city.id %>/visitors">
+            <button type="button" class="btn btn-outline-success">wanna visit?</button>
+          </form>
+        </section>
       <% } %>
-    </ul>
-</nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul>
-  <li><a href="/about">About Us</a>
-  <% if (!locals.isAuthenticated) { %>
-  <li><a href="/login">Login</a>
-  <li><a href="/register">Register</a>
-  <% } else { %>
-  <li><a href="/logout">Logout</a>
-  <li><a href="/users/<%= user.id %>">Profile</a>
-  <li><a href="/cities">Cities</a>
-
-  <% } %>
-</ul>
+    </div>
+  </div>
+</div>%>
