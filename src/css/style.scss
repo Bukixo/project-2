@@ -13,14 +13,7 @@ a {
 a:hover {
   color: $brand-primary-colour;
 }
-.ft {
 
-    color: white;
-
-  a:hover {
-    color: $body-colour;
-  }
-}
 h2 {
   @include font-subtitle;
 }
