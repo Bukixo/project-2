@@ -5,19 +5,15 @@
         <h2>Display your Wanderful experience</h2>
 
         <form method="POST" action="/users/<%= user.id %>/images" enctype="multipart/form-data">
-
           <input type="hidden" name="_method" value="PUT">
-
           <div>
             <label for="filename">username</label>
             <input type="file" name="filename" id="filename" >
           </div>
-
           <div>
             <label for="caption">caption</label>
             <textarea type="number" name="caption" id="caption" ></textarea>
           </div>
-
           <button class="col-md-12">Update</button>
         </form>
 

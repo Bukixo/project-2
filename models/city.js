@@ -10,7 +10,6 @@ commentSchema.methods.ownedBy = function ownedBy(user) {
   return this.createdBy.id === user.id;
 };
 
-
 const imagesSchema = new mongoose.Schema({
   filename: { type: String },
   caption: { type: String }

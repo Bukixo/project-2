@@ -18,11 +18,8 @@
 </head>
   <body>
     <header>
-
       <nav class="navbar navbar-default navbar-fixed-top">
-
         <ul>
-          <li><a href="/about">About Us</a>
           <% if (!locals.isAuthenticated) { %>
           <li><a href="/login">Login</a>
           <li><a href="/register">Register</a>
@@ -30,26 +27,19 @@
           <li><a href="/logout">Logout</a>
           <li><a href="/users/<%= user.id %>">Profile</a>
           <li><a href="/cities">Cities</a>
-
           <% } %>
         </ul>
-      </div>
-    </nav>
-
-
+      </nav>
     </header>
-
 
     <main class="container">
       <%- body %>
     </main>
 
-
-
-<footer>
-  <a class="ft">&copy; <script type="text/javascript">
-  document.write(new Date().getFullYear());
-</script> by <a class="ft" href="www.BukolaThompson.com">Buki</a> with 	&hearts; View on <a class="ft" href="https://github.com/Bukixo/project-2"> Github</a>
-</footer>
+    <footer>
+      <a class="ft">&copy; <script type="text/javascript">
+      document.write(new Date().getFullYear());
+      </script> by <a class="ft" href="www.BukolaThompson.com">Buki</a> with 	&hearts; View on <a class="ft" href="https://github.com/Bukixo/project-2"> Github</a>
+    </footer>
   </body>
 </html>

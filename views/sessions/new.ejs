@@ -1,4 +1,3 @@
-
 <h1 class="login">WANDERFUL</h1>
 
 <div class="row justify-content-center login">
@@ -8,27 +7,24 @@
 
         <form method="POST" action="/login">
           <h2>LOGIN</h2>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="text" name="email" id="email" class="form-control">
-        </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="passwordConfirmation">Password Confirmation</label>
+            <input type="password" name="passwordConfirmation" id="passwordConfirmation" class="form-control">
+          </div>
+          <button class="col-md-12">Sign in</button>
+          Login with in
+          <a href="<%= oauth.instagram.getLoginURL() %>">Instagram</a>
+        </form>
 
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" name="password" id="password" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="passwordConfirmation">Password Confirmation</label>
-          <input type="password" name="passwordConfirmation" id="passwordConfirmation" class="form-control">
-        </div>
-
-        <button class="col-md-12">Sign in</button>
-        Login with in
-        <a href="<%= oauth.instagram.getLoginURL() %>">Instagram</a>
-
-      </form>
-
-        </div>
       </div>
     </div>
   </div>
+</div>
