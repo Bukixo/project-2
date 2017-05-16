@@ -6,15 +6,19 @@
 
 #### Wanderful - Travelling App for solo Female travellers
 
-This app was meant for solo travellers to connect and share their travelling experiences across the world.
+This app is a tool for solo travellers to connect and share their travelling experiences across the world.
 
 
-[View it here!](https://cryptic-shelf-72611.herokuapp.com/ "Here!")
-
+[View old version!](https://cryptic-shelf-72611.herokuapp.com/ "Here!")
 ![](public/assets/landing.png)
 
+[View revised version](https://cryptic-shelf-72611.herokuapp.com/ "Here!")
+
+![](src/assets/landing2.png)
+
+
 ### Planning
-In terms of planning I felt as there was going to be alot of functionality within the app I wanted to make sure that the user experience was smooth and that the user was exactly aware of what was going on.
+In terms of planning I felt as there was going to be a lot of functionality within the app I wanted to make sure that the user experience was smooth and that the user was exactly aware of what was going on.
 
 ![](public/assets/plan.png)
 
