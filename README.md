@@ -12,7 +12,7 @@ This app is a tool for solo travellers to connect and share their travelling exp
 [View old version!](https://cryptic-shelf-72611.herokuapp.com/ "Here!")
 ![](public/assets/landing.png)
 
-[View revised version](https://cryptic-shelf-72611.herokuapp.com/ "Here!")
+[View revised version](radiant-falls-84135.herokuapp.com "Here!")
 
 ![](src/assets/landing2.png)
 
